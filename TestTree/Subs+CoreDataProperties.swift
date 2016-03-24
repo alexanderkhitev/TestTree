@@ -16,7 +16,7 @@ extension Subs {
 
     @NSManaged var id: NSNumber?
     @NSManaged var title: String?
-    @NSManaged var remoteID: String?
+    @NSManaged var remoteID: NSNumber?
     @NSManaged var category: NSManagedObject?
 
 }

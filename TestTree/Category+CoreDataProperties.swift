@@ -15,7 +15,7 @@ import CoreData
 extension Category {
 
     @NSManaged var title: String?
-    @NSManaged var remoteID: String?
+    @NSManaged var remoteID: NSNumber?
     @NSManaged var subs: NSSet?
 
 }
