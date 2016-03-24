@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 import CoreData
 
-class CategoryTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class CategoryTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, DataDownloaderDelegate {
     
     // MARK: - var and let
     private let dataDownloader = DataDownloader()
@@ -55,6 +55,7 @@ class CategoryTableViewController: UITableViewController, NSFetchedResultsContro
     private func setSetting() {
         refreshControll.addTarget(self, action: #selector(self.updateData), forControlEvents: .ValueChanged)
         tableView.addSubview(refreshControll)
+        dataDownloader.delegate = self
     }
     
     @objc private func updateData() {
@@ -83,6 +84,12 @@ class CategoryTableViewController: UITableViewController, NSFetchedResultsContro
         let sortDescriptor = NSSortDescriptor(key: "title", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
         return fetchRequest
+    }
+    
+    // MARK: - data downloader
+    func dataDownloaderDidLoad() {
+        print("dataDownloaderDidLoad")
+        tableView.reloadData()
     }
 
     // MARK: - Table view data source
