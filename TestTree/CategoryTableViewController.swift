@@ -10,13 +10,13 @@ import UIKit
 
 class CategoryTableViewController: UITableViewController {
     
-    // MARK: - var and elt
-    
+    // MARK: - var and let
+    private let dataDownloader = DataDownloader()
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.definesPresentationContext = true 
+        self.definesPresentationContext = true
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -26,6 +26,8 @@ class CategoryTableViewController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        dataDownloader.download()
+        
     }
 
     override func didReceiveMemoryWarning() {
