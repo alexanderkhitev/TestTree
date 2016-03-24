@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C8040DC016B9447E1A92DE47"
+               BlueprintIdentifier = "D3A23390C37A0979173611BB"
                BuildableName = "NSManagedObject_HYPPropertyMapper.framework"
                BlueprintName = "NSManagedObject-HYPPropertyMapper"
                ReferencedContainer = "container:Pods.xcodeproj">
