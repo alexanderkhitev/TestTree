@@ -10,12 +10,22 @@ import Foundation
 import Alamofire
 import Sync
 import DATAStack
+import MBProgressHUD
 
 public class DataDownloader {
     
     private let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+    private var progress: MBProgressHUD!
     
-    public func download() {
+    public func download(view: UIView?) {
+        progress = MBProgressHUD.showHUDAddedTo(view, animated: true)
+        progress.removeFromSuperViewOnHide = true
+        dispatch_async(dispatch_get_main_queue()) {
+            self.update()
+        }
+    }
+    
+    public func update() {
         let urlString = "https://money.yandex.ru/api/categories-list"
         Alamofire.request(.GET, urlString).responseJSON { (response) in
             if response.result.isSuccess {
@@ -35,6 +45,7 @@ public class DataDownloader {
             } else {
                 print(error?.localizedDescription)
             }
+            self.progress.hide(true)
         }
     }
     
