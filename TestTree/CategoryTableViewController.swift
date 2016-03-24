@@ -7,16 +7,26 @@
 //
 
 import UIKit
+import Foundation
+import CoreData
 
-class CategoryTableViewController: UITableViewController {
+class CategoryTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
     // MARK: - var and let
     private let dataDownloader = DataDownloader()
+    private let refreshControll = UIRefreshControl()
+    private var fetchedResultController: NSFetchedResultsController!
+    private let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+    private var categories = [Category]()
+
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.definesPresentationContext = true
+        setFetchedResultController()
+        setSetting()
+        firstLaunch()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -26,31 +36,74 @@ class CategoryTableViewController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        dataDownloader.download(view)
-        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // MARK: - functions
+    private func firstLaunch() {
+        let firstLaunch = NSUserDefaults.standardUserDefaults().boolForKey("firstLaunch")
+        if firstLaunch == false {
+            dataDownloader.download(tableView)
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "firstLaunch")
+        }
+    }
+    
+    private func setSetting() {
+        refreshControll.addTarget(self, action: #selector(self.updateData), forControlEvents: .ValueChanged)
+        tableView.addSubview(refreshControll)
+    }
+    
+    @objc private func updateData() {
+        dataDownloader.update()
+        refreshControll.endRefreshing()
+        tableView.reloadData()
+    }
+    
+    // MARK: - FetchedResultController
+    private func setFetchedResultController() {
+        let managedObjectContext = appDelegate.managedObjectContext
+        fetchedResultController = NSFetchedResultsController(fetchRequest: fetchRequest(), managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultController.delegate = self
+        do {
+            try fetchedResultController.performFetch()
+        } catch let error as NSError {
+            print(error.localizedDescription, error.userInfo)
+        }
+        categories = fetchedResultController.fetchedObjects as! [Category]
+        
+        print(fetchedResultController.fetchedObjects?.count)
+    }
+    
+    private func fetchRequest() -> NSFetchRequest {
+        let fetchRequest = NSFetchRequest(entityName: "Category")
+        let sortDescriptor = NSSortDescriptor(key: "title", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        return fetchRequest
+    }
 
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1 ?? 0
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return categories.count ?? 0
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("categoryCell", forIndexPath: indexPath)
 
         // Configure the cell...
+        let category = categories[indexPath.row]
+        
+        cell.textLabel?.text = category.title
 
         return cell
     }
