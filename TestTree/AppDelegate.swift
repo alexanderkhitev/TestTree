@@ -8,6 +8,9 @@
 
 import UIKit
 import CoreData
+import Alamofire
+import Sync
+import DATAStack
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
