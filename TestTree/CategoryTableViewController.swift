@@ -10,12 +10,11 @@ import UIKit
 import Foundation
 import CoreData
 
-class CategoryTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, DataDownloaderDelegate {
+class CategoryTableViewController: UITableViewController, DataDownloaderDelegate {
     
     // MARK: - var and let
     private let dataDownloader = DataDownloader()
     private let refreshControll = UIRefreshControl()
-    private var fetchedResultController: NSFetchedResultsController!
     private let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
     private var categories = [Category]()
 
@@ -24,7 +23,6 @@ class CategoryTableViewController: UITableViewController, NSFetchedResultsContro
     override func viewDidLoad() {
         super.viewDidLoad()
         self.definesPresentationContext = true
-        setFetchedResultController()
         setSetting()
         firstLaunch()
         // Uncomment the following line to preserve selection between presentations
@@ -36,6 +34,7 @@ class CategoryTableViewController: UITableViewController, NSFetchedResultsContro
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        fetchRequest()
     }
 
     override func didReceiveMemoryWarning() {
@@ -61,46 +60,36 @@ class CategoryTableViewController: UITableViewController, NSFetchedResultsContro
     @objc private func updateData() {
         dataDownloader.update()
         refreshControll.endRefreshing()
-        tableView.reloadData()
     }
     
     // MARK: - FetchedResultController
-    private func setFetchedResultController() {
-        let managedObjectContext = appDelegate.managedObjectContext
-        fetchedResultController = NSFetchedResultsController(fetchRequest: fetchRequest(), managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-        fetchedResultController.delegate = self
+    
+    private func fetchRequest() {
+        let fetchRequest = NSFetchRequest(entityName: "Category")
+        let sortDescriptor = NSSortDescriptor(key: "remoteID", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        let dataStack = appDelegate.dataStack
         do {
-            try fetchedResultController.performFetch()
+            try categories = (dataStack.mainContext.executeFetchRequest(fetchRequest) as? [Category])!
         } catch let error as NSError {
             print(error.localizedDescription, error.userInfo)
         }
-        categories = fetchedResultController.fetchedObjects as! [Category]
-        
-        print(fetchedResultController.fetchedObjects?.count)
-    }
-    
-    private func fetchRequest() -> NSFetchRequest {
-        let fetchRequest = NSFetchRequest(entityName: "Category")
-        let sortDescriptor = NSSortDescriptor(key: "title", ascending: true)
-        fetchRequest.sortDescriptors = [sortDescriptor]
-        return fetchRequest
+        tableView.reloadData()
     }
     
     // MARK: - data downloader
     func dataDownloaderDidLoad() {
+        fetchRequest()
         print("dataDownloaderDidLoad")
-        tableView.reloadData()
     }
 
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1 ?? 0
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return categories.count ?? 0
     }
 
@@ -114,50 +103,14 @@ class CategoryTableViewController: UITableViewController, NSFetchedResultsContro
 
         return cell
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    // MARK: - for navigation
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let currentCategory = categories[indexPath.row]
+        let subTVC = InterfaceUtility.mainStoryboard.instantiateViewControllerWithIdentifier("SubTableViewController") as! SubTableViewController
+        subTVC.category = currentCategory
+        showViewController(subTVC, sender: self)
     }
-    */
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+   
 }

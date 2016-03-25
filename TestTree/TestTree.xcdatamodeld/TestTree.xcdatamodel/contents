@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15E65" minimumToolsVersion="Automatic">
     <entity name="Category" representedClassName="Category" syncable="YES">
-        <attribute name="remoteID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="remoteID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES">
             <userInfo>
                 <entry key="hyper.isPrimaryKey" value="YES"/>
@@ -10,20 +10,16 @@
         <relationship name="subs" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Subs" inverseName="category" inverseEntity="Subs" syncable="YES"/>
     </entity>
     <entity name="Subs" representedClassName="Subs" syncable="YES">
-        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <attribute name="remoteID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="remoteID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES">
             <userInfo>
                 <entry key="hyper.isPrimaryKey" value="YES"/>
             </userInfo>
         </attribute>
-        <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="subs" inverseEntity="Category" syncable="YES"/>
-        <userInfo>
-            <entry key="hyper.isPrimaryKey" value="YES"/>
-        </userInfo>
+        <relationship name="category" optional="YES" maxCount="1" deletionRule="Deny" destinationEntity="Category" inverseName="subs" inverseEntity="Category" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Category" positionX="-63" positionY="-18" width="128" height="90"/>
-        <element name="Subs" positionX="169" positionY="93" width="128" height="105"/>
+        <element name="Category" positionX="-63" positionY="-18" width="128" height="88"/>
+        <element name="Subs" positionX="178" positionY="27" width="128" height="88"/>
     </elements>
 </model>

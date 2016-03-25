@@ -19,16 +19,17 @@ import CoreData
 
 public class DataDownloader {
     
+    // MARK: - var and let
     public weak var delegate: DataDownloaderDelegate?
-    
     private let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
     private var progress: MBProgressHUD!
+    
+    // MARK: - functions
     
     public func download(view: UIView?) {
         progress = MBProgressHUD.showHUDAddedTo(view, animated: true)
         progress.removeFromSuperViewOnHide = true
         update()
-        progress.hide(true)
     }
     
     public func update() {
@@ -38,7 +39,6 @@ public class DataDownloader {
                 if response.result.isSuccess {
                     guard let result = response.result.value as? [[String : AnyObject]] else { return }
                     self.save(result)
-                    self.delegate?.dataDownloaderDidLoad?()
                 } else {
                     print(response.result.error?.localizedDescription)
                 }
@@ -48,10 +48,14 @@ public class DataDownloader {
     
     private func save(json: [[String : AnyObject]]) {
         let dataStack = appDelegate.dataStack
-        print(json)
+        print(json.count)
         Sync.changes(json, inEntityNamed: "Category", dataStack: dataStack) { (error) in
             if error == nil {
                 print("success")
+                if self.progress != nil {
+                    self.progress.hide(true)
+                }
+                self.delegate?.dataDownloaderDidLoad?()
             } else {
                 print(error?.localizedDescription)
             }

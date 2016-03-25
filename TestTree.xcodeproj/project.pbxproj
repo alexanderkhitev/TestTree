@@ -15,11 +15,13 @@
 		A659C46D1CA45AAC004E59C8 /* TestTreeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A659C46C1CA45AAC004E59C8 /* TestTreeUITests.swift */; };
 		A659C47D1CA45F71004E59C8 /* DataDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A659C47C1CA45F71004E59C8 /* DataDownloader.swift */; };
 		A659C47F1CA46119004E59C8 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A659C47E1CA46119004E59C8 /* CategoryTableViewController.swift */; };
-		A659C4861CA464E1004E59C8 /* Subs+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A659C4821CA464E1004E59C8 /* Subs+CoreDataProperties.swift */; };
-		A659C4871CA464E1004E59C8 /* Subs.swift in Sources */ = {isa = PBXBuildFile; fileRef = A659C4831CA464E1004E59C8 /* Subs.swift */; };
-		A659C4881CA464E1004E59C8 /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A659C4841CA464E1004E59C8 /* Category+CoreDataProperties.swift */; };
-		A659C4891CA464E1004E59C8 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = A659C4851CA464E1004E59C8 /* Category.swift */; };
 		A659C48D1CA46BCD004E59C8 /* Bridge.m in Sources */ = {isa = PBXBuildFile; fileRef = A659C48C1CA46BCD004E59C8 /* Bridge.m */; };
+		A6CA3BEF1CA549BE00E6368E /* SubTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CA3BEE1CA549BE00E6368E /* SubTableViewController.swift */; };
+		A6CA3BF11CA54A8900E6368E /* InterfaceUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CA3BF01CA54A8900E6368E /* InterfaceUtility.swift */; };
+		A6D513241CA5405B003CC6E1 /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D513201CA5405B003CC6E1 /* Category+CoreDataProperties.swift */; };
+		A6D513251CA5405B003CC6E1 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D513211CA5405B003CC6E1 /* Category.swift */; };
+		A6D513261CA5405B003CC6E1 /* Subs+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D513221CA5405B003CC6E1 /* Subs+CoreDataProperties.swift */; };
+		A6D513271CA5405B003CC6E1 /* Subs.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D513231CA5405B003CC6E1 /* Subs.swift */; };
 		C0F9EE4B5869C3A812E65907 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7C6CEDA518CC64AB49E2317 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -47,12 +49,14 @@
 		A659C46E1CA45AAC004E59C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A659C47C1CA45F71004E59C8 /* DataDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataDownloader.swift; sourceTree = "<group>"; };
 		A659C47E1CA46119004E59C8 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
-		A659C4821CA464E1004E59C8 /* Subs+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Subs+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		A659C4831CA464E1004E59C8 /* Subs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subs.swift; sourceTree = "<group>"; };
-		A659C4841CA464E1004E59C8 /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		A659C4851CA464E1004E59C8 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		A659C48B1CA46BCD004E59C8 /* TestTree-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TestTree-Bridging-Header.h"; sourceTree = "<group>"; };
 		A659C48C1CA46BCD004E59C8 /* Bridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bridge.m; sourceTree = "<group>"; };
+		A6CA3BEE1CA549BE00E6368E /* SubTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubTableViewController.swift; sourceTree = "<group>"; };
+		A6CA3BF01CA54A8900E6368E /* InterfaceUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterfaceUtility.swift; sourceTree = "<group>"; };
+		A6D513201CA5405B003CC6E1 /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A6D513211CA5405B003CC6E1 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		A6D513221CA5405B003CC6E1 /* Subs+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Subs+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A6D513231CA5405B003CC6E1 /* Subs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subs.swift; sourceTree = "<group>"; };
 		D772B85A5EEE6B41DA519F00 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		E7C6CEDA518CC64AB49E2317 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -102,7 +106,7 @@
 				A659C4541CA45AAC004E59C8 /* AppDelegate.swift */,
 				A659C4791CA45D24004E59C8 /* Controllers */,
 				A659C4801CA4615E004E59C8 /* Cell */,
-				A659C47B1CA45EDB004E59C8 /* Managers */,
+				A659C47B1CA45EDB004E59C8 /* Utilities */,
 				A659C4771CA45CFB004E59C8 /* Interface */,
 				A659C4781CA45D0F004E59C8 /* Resource */,
 				A659C47A1CA45D2F004E59C8 /* CoreData */,
@@ -142,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				A659C47E1CA46119004E59C8 /* CategoryTableViewController.swift */,
+				A6CA3BEE1CA549BE00E6368E /* SubTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -155,12 +160,13 @@
 			name = CoreData;
 			sourceTree = "<group>";
 		};
-		A659C47B1CA45EDB004E59C8 /* Managers */ = {
+		A659C47B1CA45EDB004E59C8 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
 				A659C47C1CA45F71004E59C8 /* DataDownloader.swift */,
+				A6CA3BF01CA54A8900E6368E /* InterfaceUtility.swift */,
 			);
-			name = Managers;
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 		A659C4801CA4615E004E59C8 /* Cell */ = {
@@ -173,10 +179,10 @@
 		A659C4811CA464AD004E59C8 /* DataClasses */ = {
 			isa = PBXGroup;
 			children = (
-				A659C4821CA464E1004E59C8 /* Subs+CoreDataProperties.swift */,
-				A659C4831CA464E1004E59C8 /* Subs.swift */,
-				A659C4841CA464E1004E59C8 /* Category+CoreDataProperties.swift */,
-				A659C4851CA464E1004E59C8 /* Category.swift */,
+				A6D513201CA5405B003CC6E1 /* Category+CoreDataProperties.swift */,
+				A6D513211CA5405B003CC6E1 /* Category.swift */,
+				A6D513221CA5405B003CC6E1 /* Subs+CoreDataProperties.swift */,
+				A6D513231CA5405B003CC6E1 /* Subs.swift */,
 			);
 			name = DataClasses;
 			sourceTree = "<group>";
@@ -359,15 +365,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A659C4881CA464E1004E59C8 /* Category+CoreDataProperties.swift in Sources */,
+				A6D513261CA5405B003CC6E1 /* Subs+CoreDataProperties.swift in Sources */,
 				A659C48D1CA46BCD004E59C8 /* Bridge.m in Sources */,
-				A659C4861CA464E1004E59C8 /* Subs+CoreDataProperties.swift in Sources */,
+				A6D513241CA5405B003CC6E1 /* Category+CoreDataProperties.swift in Sources */,
 				A659C45D1CA45AAC004E59C8 /* TestTree.xcdatamodeld in Sources */,
+				A6CA3BF11CA54A8900E6368E /* InterfaceUtility.swift in Sources */,
 				A659C47D1CA45F71004E59C8 /* DataDownloader.swift in Sources */,
 				A659C4551CA45AAC004E59C8 /* AppDelegate.swift in Sources */,
-				A659C4871CA464E1004E59C8 /* Subs.swift in Sources */,
+				A6CA3BEF1CA549BE00E6368E /* SubTableViewController.swift in Sources */,
 				A659C47F1CA46119004E59C8 /* CategoryTableViewController.swift in Sources */,
-				A659C4891CA464E1004E59C8 /* Category.swift in Sources */,
+				A6D513271CA5405B003CC6E1 /* Subs.swift in Sources */,
+				A6D513251CA5405B003CC6E1 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
